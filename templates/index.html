@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QQQ 成分股分析</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+
+  <!-- ===== Zone 1: Hero Banner ===== -->
+  <header class="hero-banner">
+    <div class="hero-left">
+      <div class="qqq-label">QQQ</div>
+      <div class="qqq-price" id="qqqPrice">--</div>
+      <div class="qqq-change" id="qqqChange">-- (--)</div>
+    </div>
+
+    <div class="hero-center">
+      <div class="stat-box">
+        <div class="stat-label">成分股贡献合计</div>
+        <div class="stat-value" id="totalContrib">--</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">持仓数量</div>
+        <div class="stat-value" id="holdingsCount">--</div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="market-badge" id="marketBadge">
+        <span class="market-dot" id="marketDot"></span>
+        <span id="marketLabel">加载中...</span>
+      </div>
+      <div class="time-info" id="timeInfo"></div>
+      <div class="countdown" id="countdown"></div>
+      <button class="refresh-btn" id="refreshBtn">立即刷新</button>
+    </div>
+  </header>
+
+  <!-- ===== Loading Overlay ===== -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">正在获取实时数据...<br><small>首次加载约需 15 秒，请耐心等待</small></div>
+  </div>
+
+  <main class="main-content" id="mainContent" style="display:none">
+
+    <!-- ===== Zone 2: Heatmap ===== -->
+    <section class="section heatmap-section">
+      <div class="section-header">
+        <h2 class="section-title">持仓热力图 <span class="section-sub">（按权重大小，颜色代表涨跌幅）</span></h2>
+        <div class="legend">
+          <span class="legend-item legend-strong-down">大跌 &lt;-2%</span>
+          <span class="legend-item legend-mid-down">中跌</span>
+          <span class="legend-item legend-light-down">小跌</span>
+          <span class="legend-item legend-neutral">平</span>
+          <span class="legend-item legend-light-up">小涨</span>
+          <span class="legend-item legend-mid-up">中涨</span>
+          <span class="legend-item legend-strong-up">大涨 &gt;+2%</span>
+        </div>
+      </div>
+      <div class="heatmap-grid" id="heatmapGrid"></div>
+    </section>
+
+    <!-- ===== Zone 3: Full Table ===== -->
+    <section class="section table-section">
+      <div class="section-header">
+        <h2 class="section-title">全部成分股明细</h2>
+        <div class="table-controls">
+          <input type="text" class="search-input" id="searchBox" placeholder="搜索股票代码或公司名称..." />
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table id="holdingsTable">
+          <thead>
+            <tr>
+              <th data-sort="ticker"     class="col-left">代码 <span class="sort-icon">↕</span></th>
+              <th data-sort="name"       class="col-left">公司名称 <span class="sort-icon">↕</span></th>
+              <th data-sort="market_cap">市值 <span class="sort-icon">↕</span></th>
+              <th data-sort="weight">权重% <span class="sort-icon">↕</span></th>
+              <th data-sort="price">当前价 <span class="sort-icon">↕</span></th>
+              <th data-sort="change_dollar">涨跌额 <span class="sort-icon">↕</span></th>
+              <th data-sort="change_pct">涨跌% <span class="sort-icon">↕</span></th>
+              <th data-sort="contribution">对QQQ贡献 <span class="sort-icon">↕</span></th>
+            </tr>
+          </thead>
+          <tbody id="holdingsBody">
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-footer" id="tableFooter"></div>
+    </section>
+
+  </main>
+
+  <!-- ===== Tooltip ===== -->
+  <div class="tooltip" id="tooltip"></div>
+
+  <script src="/static/js/main.js"></script>
+</body>
+</html>
