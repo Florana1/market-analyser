@@ -16,6 +16,7 @@ env/
 # Claude Code internals
 .claude/
 tmpclaude-*
+CLAUDE.md
 
 # OS
 .DS_Store
