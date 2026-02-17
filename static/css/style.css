@@ -418,6 +418,12 @@ body {
 .neg-strong { color: var(--red-strong); font-weight: 600; }
 .neutral    { color: var(--text-muted); }
 
+/* Override table td default color for pos/neg cells */
+#holdingsTable tbody td.pos        { color: var(--green-strong); }
+#holdingsTable tbody td.neg        { color: var(--red-mid); }
+#holdingsTable tbody td.pos-strong { color: var(--green-dark); }
+#holdingsTable tbody td.neg-strong { color: var(--red-strong); }
+
 /* ---- Contribution cell ------------------------------------ */
 .contrib-cell {
   display: flex;

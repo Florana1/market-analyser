@@ -139,7 +139,7 @@ function showTooltip(e, h) {
   tooltipEl.innerHTML = `
     <div class="tooltip-ticker ${getStrongClass(h.change_pct)}">${escHtml(h.ticker)}</div>
     <div style="font-size:0.75rem;color:var(--text-secondary);margin-bottom:6px">${escHtml(h.name)}</div>
-    <div class="tooltip-row">权重<span>${h.weight.toFixed(4)}%</span></div>
+    <div class="tooltip-row">权重<span>${h.weight.toFixed(2)}%</span></div>
     <div class="tooltip-row">当前价<span>${fmtPrice(h.price)}</span></div>
     <div class="tooltip-row">涨跌额<span class="${getChangeClass(h.change_dollar)}">${fmtDollar(h.change_dollar)}</span></div>
     <div class="tooltip-row">涨跌幅<span class="${getStrongClass(h.change_pct)}">${fmtPct(h.change_pct)}</span></div>
@@ -185,7 +185,7 @@ function renderTable(holdings) {
       <td class="col-left"><span class="ticker-cell">${escHtml(h.ticker)}</span></td>
       <td class="col-left"><span class="name-cell" title="${escHtml(h.name)}">${escHtml(h.name)}</span></td>
       <td style="text-align:right">${fmtMarketCap(h.market_cap)}</td>
-      <td>${h.weight.toFixed(4)}%</td>
+      <td>${h.weight.toFixed(2)}%</td>
       <td>${fmtPrice(h.price)}</td>
       <td class="${getChangeClass(h.change_dollar)}">${fmtDollar(h.change_dollar)}</td>
       <td class="${getStrongClass(h.change_pct)}">${fmtPct(h.change_pct)}</td>
